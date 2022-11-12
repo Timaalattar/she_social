@@ -11,7 +11,7 @@ require('./config/database')
 app.use(cors())
 app.use(express.json())
 // app.use(express.urlencoded({extended: false}))
-//....
+//....ßß
 app.use('/', require('./routes/events'))
 app.use('/', require('./routes/users'))
 
