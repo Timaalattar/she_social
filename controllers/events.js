@@ -38,6 +38,7 @@ async function event_update_put(req,res) {
     try {
         let updatedEvent = await Event.findByIdAndUpdate(
             req.params.userId,
+            req.params.eventsId,
             req.body 
         )
             res.status(200).json({message: 'Tweet updated Successfully!'})
@@ -51,6 +52,7 @@ async function event_delete(req,res) {
     try {
         await Event.findByIdAndDelete(
             req.params.eventId
+            req.params.eventsId
         )
         res.json({message: 'Event Deleted Successfully'})
    

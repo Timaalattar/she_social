@@ -9,7 +9,7 @@ router.post('/users/:userid/events', eventsController.event_create_post)
 router.get('/events/:eventId', eventsController.event_details_get)
 
 //update event
-router.put('/events/:userId', eventsController.event_update_put)
+router.put('/events/:eventsId', eventsController.event_update_put)
 
 //delete event
 router.delete('/events/:eventId', eventsController.event_delete)
