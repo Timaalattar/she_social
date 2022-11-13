@@ -21,7 +21,6 @@ async function confirmed_details_get(req,res) {
     }
 }
 
-
 async function confirmed_delete(req,res) {
     try {
         let deleteConfirmation= await User.findByIdAndDelete(req.params.confirmedid)
