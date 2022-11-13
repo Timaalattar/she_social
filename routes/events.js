@@ -15,4 +15,4 @@ router.put('/events/:userId', eventsController.event_update_put)
 router.delete('/events/:eventsId', eventsController.event_delete)
 
 //search for events
-router.get('/events', eventsController.event_search_get)
+router.get('/events/:category', eventsController.event_search_get)
