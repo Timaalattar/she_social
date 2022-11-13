@@ -1,5 +1,5 @@
 const { json } = require('express')
-const User = require('../models/Confirmed')
+const Confirmed = require('../models/Confirmed')
 
 async function confirmed_create_post(req,res) {
     try {
