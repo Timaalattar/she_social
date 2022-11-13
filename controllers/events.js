@@ -34,7 +34,7 @@ async function event_delete(req,res) {
             req.params._id
         )
         res.json({message: 'Event Deleted Successfully'})
-
+   
     } catch (err) {
         res.json(err)
     }
@@ -42,7 +42,8 @@ async function event_delete(req,res) {
 
 async function event_search_get(req,res) {
     try {
-
+        await Event.find({ Category: req.body.Category }).exec();
+        
     } catch (err) {
         res.json(err)
     }
