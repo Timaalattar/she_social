@@ -27,7 +27,7 @@ res.json(newEvent).status(200)
 async function event_details_get(req,res) {
     
     try {
-const event = await Event.findById(req.params._id)
+const event = await Event.findById(req.params.eventId)
 res.json(event).status(200)
     } catch (err) {
         res.json(err)
@@ -37,7 +37,7 @@ res.json(event).status(200)
 async function event_update_put(req,res) {
     try {
         let updatedEvent = await Event.findByIdAndUpdate(
-            req.params._id,
+            req.params.userId,
             req.body 
         )
             res.status(200).json({message: 'Tweet updated Successfully!'})
@@ -50,7 +50,7 @@ async function event_update_put(req,res) {
 async function event_delete(req,res) {
     try {
         await Event.findByIdAndDelete(
-            req.params._id
+            req.params.eventId
         )
         res.json({message: 'Event Deleted Successfully'})
    
@@ -62,9 +62,11 @@ async function event_delete(req,res) {
 async function event_search_get(req,res) {
     
     try {
-let event = await Event.find({Category: req.params.category})
-res.json(event).status(200)
+        let event = await Event.find({Category: req.params.category})
+        res.json(event).status(200)
+
     } catch (err) {
+        
         res.json(err)
     }
 }
