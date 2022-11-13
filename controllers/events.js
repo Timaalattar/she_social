@@ -1,5 +1,6 @@
 const { json } = require('express')
-const User = require('../models/Event')
+const Event = require('../models/Event')
+
 
 async function event_create_post(req,res) {
     try {
