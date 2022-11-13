@@ -106,5 +106,5 @@ module.exports = {
     user_login_post,
     user_details_get,
     user_update_put,
-    user_delete,
+    user_delete
 }

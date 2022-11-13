@@ -8,7 +8,6 @@ router.post('/users/confirmed', confirmedController.confirmed_create_post)
 //View list of confirmations
 router.get('/user/confirmed/:confirmedid', confirmedController.confirmed_details_get)
 
-
 //delete detail confrimaton
 router.delete('/user/confirmed/:confirmedid', confirmedController.confirmed_delete)
 
