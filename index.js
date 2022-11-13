@@ -12,8 +12,10 @@ app.use(cors())
 app.use(express.json())
 // app.use(express.urlencoded({extended: false}))
 
-// app.use('/', require('./routes/events'))
-// app.use('/', require('./routes/users'))
+app.use('/', require('./routes/events'))
+app.use('/', require('./routes/users'))
+app.use('/', require('./routes/confirmed'))
+
 
 // Listening on a port
 app.listen(4000, () => {
