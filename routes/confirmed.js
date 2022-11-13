@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const confirmedController = require('../controllers/users')
+const confirmedController = require('../controllers/confirmed')
 
 //confirming for an event
 router.post('/users/events/:eventid', confirmedController.confirmed_create_post)

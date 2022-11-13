@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const eventsController = require('../controllers/users')
+const eventsController = require('../controllers/events')
 
 //Creating a new event
 router.post('/users/:userid/events', eventsController.event_create_post)
@@ -9,7 +9,7 @@ router.post('/users/:userid/events', eventsController.event_create_post)
 router.get('/events/:eventid', eventsController.event_details_get)
 
 //update event
-router.put('/events/:userId', eventsController.event_update_put)
+router.put('/events/:eventsId', eventsController.event_update_put)
 
 //delete event
 router.delete('/events/:eventsId', eventsController.event_delete)
