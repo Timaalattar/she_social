@@ -16,3 +16,5 @@ router.put('/users/:userId', usersController.user_update_put)
 
 //delete user route
 router.delete('/users/:userId', usersController.user_delete)
+
+module.exports = router

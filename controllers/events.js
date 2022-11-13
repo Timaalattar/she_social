@@ -52,7 +52,6 @@ async function event_delete(req,res) {
     try {
         await Event.findByIdAndDelete(
             req.params.eventId
-            req.params.eventsId
         )
         res.json({message: 'Event Deleted Successfully'})
    

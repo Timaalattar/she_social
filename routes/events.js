@@ -16,3 +16,5 @@ router.delete('/events/:eventId', eventsController.event_delete)
 
 //search for events
 router.get('/events/:category', eventsController.event_search_get)
+
+module.exports = router

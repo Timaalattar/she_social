@@ -12,4 +12,6 @@ router.get('/user/confirmed/:confirmedid', confirmedController.confirmed_details
 router.delete('/user/confirmed/:confirmedid', confirmedController.confirmed_delete)
 
 //list all event attendees
-router.get('/users/events/:eventid', eventsController.confirm_search_get)
+router.get('/users/events/:eventid', confirmedController.confirm_search_get)
+
+module.exports = router
