@@ -43,7 +43,8 @@ async function event_delete(req,res) {
 async function event_search_get(req,res) {
     try {
         
-
+        await Event.find({ Category: req.body.Category }).exec();
+        
     } catch (err) {
         res.json(err)
     }
