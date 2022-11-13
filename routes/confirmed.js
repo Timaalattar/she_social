@@ -12,7 +12,7 @@ router.get('/user/:userid/confirmed', confirmedController.confirmed_details_get)
 router.put('/user/:userid/confirmed/:confirmedid', confirmedController.confirmed_update_put)
 
 //delete detail confrimaton
-router.delete('/user/:userid/confirmed/:confirmedid', confirmedController.event_delete)
+router.delete('/user/:userid/confirmed/:confirmedid', confirmedController.confirmed_delete)
 
 //list all event attendees
-router.get('/users/events/:eventid', eventsController.event_search_get)
+router.get('/users/events/:eventid', eventsController.confirm_search_get)
