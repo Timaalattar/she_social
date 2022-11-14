@@ -9,7 +9,7 @@ router.post('/users', usersController.user_create_post)
 router.post('/users/login', usersController.user_login_post)
 
 //View user details
-router.get('/users/login', usersController.user_details_get)
+router.get('/users/:userId', usersController.user_details_get)
 
 //update user
 router.put('/users/:userId', usersController.user_update_put)
