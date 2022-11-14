@@ -9,9 +9,11 @@ const UserModel = new Schema ({
     username: {type:String, require: true},
     email: {type:String, require: true},
     password: {type:String, require: true},
+   
 }, {
     timestamps: true
 })
+
 
 //Storing our Schema as a model 
 const User = mongoose.model('User', UserModel)

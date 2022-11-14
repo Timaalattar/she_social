@@ -11,9 +11,9 @@ const ConfirmedModel = new Schema ({
         ref: 'User'
     }],
     //Associate the Event model
-    Event: [{type: Schema.Types.ObjectId ,
+    Event: {type: Schema.Types.ObjectId ,
         ref: 'Event'
-    }]
+    }
    
     
 }, {
