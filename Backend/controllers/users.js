@@ -66,6 +66,8 @@ async function user_login_post(req,res) {
             }
         )
 
+        req.user = payload
+
     } catch (error) {
         console.log(error)
         res.json({message:"You are not logged in, try again later"}).status(400);
