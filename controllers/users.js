@@ -6,9 +6,6 @@ const bcrypt = require('bcrypt')
 const saltRounds = 10;
 const jwt = require('jsonwebtoken')
 
-//Require jsonwebtoken
-const jwt = require('jsonwebtoken')
-
 async function user_create_post(req,res) {
     try {
        
@@ -76,7 +73,7 @@ async function user_login_post(req,res) {
 
 async function user_details_get(req,res) {
     try {
-        let findUser = await Tweet.findByIdandUpdat ()
+        let findUser = await User.findByIdandUpdate()
         res.json(findUser)
     } catch (err) {
         res.json(err)
