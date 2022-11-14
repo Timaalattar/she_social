@@ -9,9 +9,17 @@ const UserModel = new Schema ({
     username: {type:String, require: true},
     email: {type:String, require: true},
     password: {type:String, require: true},
+   
+    //Associate the user model
+    Event: {type: Schema.Types.ObjectId ,
+            ref: 'Event'
+        }
+        
+
 }, {
     timestamps: true
 })
+
 
 //Storing our Schema as a model 
 const User = mongoose.model('User', UserModel)

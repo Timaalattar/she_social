@@ -17,4 +17,7 @@ router.put('/users/:userId', usersController.user_update_put)
 //delete user route
 router.delete('/users/:userId', usersController.user_delete)
 
+//Creating a new event
+router.post('/users/:userId/events', usersController.event_create_post)
+
 module.exports = router
