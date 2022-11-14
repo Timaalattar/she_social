@@ -6,6 +6,9 @@ const bcrypt = require('bcrypt')
 const saltRounds = 10;
 const jwt = require('jsonwebtoken')
 
+//Require jsonwebtoken
+const jwt = require('jsonwebtoken')
+
 async function user_create_post(req,res) {
     try {
        
