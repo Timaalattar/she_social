@@ -1,5 +1,5 @@
 const { json } = require('express')
-const User = require('../../models/User')
+const User = require('../models/User')
 
 //Require bcrypt
 const bcrypt = require('bcrypt')
@@ -64,6 +64,8 @@ async function user_login_post(req,res) {
                 res.json({token}).status(200);
             }
         )
+
+        req.user = payload
 
     } catch (error) {
         console.log(error)

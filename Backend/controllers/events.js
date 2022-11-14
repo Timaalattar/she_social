@@ -3,11 +3,12 @@ const Event = require('../models/Event')
 const User = require('../models/User')
 
 async function event_create_post(req,res) {
-    
+    console.log('user',req.header("Authorization"))
     // for testing purposes
     console.log('Req Body:', req.body)
     
     try {
+        
       let newEvent= await Event.create({
         
         EventName: req.body.EventName,
@@ -15,9 +16,11 @@ async function event_create_post(req,res) {
         Time: req.body.Time,
         Locate: req.body.Locate,
         Category:req.body.Category,
-        Description:req.body.Description
+        Description:req.body.Description,
+        
         
         })
+      
 res.json(newEvent).status(200)
 
     } catch (err) {
