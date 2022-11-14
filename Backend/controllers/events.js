@@ -2,7 +2,6 @@ const { json } = require('express')
 const Event = require('../models/Event')
 const User = require('../models/User')
 
-
 async function event_create_post(req,res) {
     
     // for testing purposes
@@ -30,8 +29,7 @@ async function event_details_get(req,res) {
     
     try {
 const event = await Event.findById(req.params.eventId)
-
- await event.populate('User')
+await event.populate('User')
 
 res.json(event).status(200)
 
