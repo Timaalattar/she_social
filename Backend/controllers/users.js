@@ -1,10 +1,11 @@
 const { json } = require('express')
-const User = require('../models/User')
+const User = require('../../models/User')
 
 //Require bcrypt
 const bcrypt = require('bcrypt')
 const saltRounds = 10;
 const jwt = require('jsonwebtoken')
+
 
 async function user_create_post(req,res) {
     try {
