@@ -1,5 +1,5 @@
 const { json } = require('express')
-const User = require('../models/User')
+const User = require('../../models/User')
 
 //Require bcrypt
 const bcrypt = require('bcrypt')
