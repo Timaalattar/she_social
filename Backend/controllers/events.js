@@ -3,9 +3,7 @@ const Event = require('../models/Event')
 const User = require('../models/User')
 
 async function event_create_post(req,res) {
-    console.log('user',req.header("Authorization"))
-    // for testing purposes
-    console.log('Req Body:', req.body)
+    
     
     try {
         
