@@ -2,9 +2,6 @@ const express = require('express')
 const router = express.Router()
 const eventsController = require('../controllers/events')
 
-//Creating a new event
-router.post('/users/:userid/events', eventsController.event_create_post)
-
 //View event details
 router.get('/events/:eventId', eventsController.event_details_get)
 
