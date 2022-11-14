@@ -10,6 +10,12 @@ const UserModel = new Schema ({
     email: {type:String, require: true},
     password: {type:String, require: true},
    
+    //Associate the user model
+    Event: {type: Schema.Types.ObjectId ,
+            ref: 'Event'
+        }
+        
+
 }, {
     timestamps: true
 })
