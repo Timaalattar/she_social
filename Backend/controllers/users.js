@@ -53,7 +53,8 @@ async function user_login_post(req,res) {
     //if password is a match we create a token 
         const payload = {
             user: {
-                id: user._id
+                id: user._id,
+                FirstName: user.FirstName
             }
         }
 
@@ -109,9 +110,11 @@ async function user_delete(req,res) {
 
 async function event_create_post(req,res) {
     // Find the user that created the tweet
+    // console.log('user',req.user);
     let user = await User.findById(req.params.userId)
     //Create the tweet
     let newEvent = await Event.create(req.body)
+    // let newEvent = await Event.create(req.body)
     // Push the new tweet ID into the user's 'tweets' property
     console.log(user)
     user.Event.push(newEvent._id)
