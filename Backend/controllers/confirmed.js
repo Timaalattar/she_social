@@ -34,17 +34,6 @@ async function confirmed_create_post(req,res) {
     res.json(newConfirmed)   
 }
 
-// async function confirmed_create_post(req,res) {
-//     try {
-//         const newConfirmation= await Confirmed.create({
-//             Confirmation: req.body.Confirmation    
-//         })
-//         res.json(newConfirmation)
-//     } catch (err) {
-//         res.json(err)
-//     }
-// }
-
 async function confirmed_details_get(req,res) {
     try {
         const confirmed = await Confirmed.findById(req.params.confirmedid)
@@ -56,10 +45,7 @@ async function confirmed_details_get(req,res) {
 }
 
 async function confirmed_delete(req,res) {
-  
-  
     try {
-
         let deleteConfirmation= await User.findByIdAndDelete(req.params.confirmedid)
         // res.json({message: 'Confirmation delete successfully'})
         res.json(deleteConfirmation)
