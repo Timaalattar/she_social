@@ -11,9 +11,9 @@ const UserModel = new Schema ({
     password: {type:String, require: true},
    
     //Associate the user model
-    Event: {type: Schema.Types.ObjectId ,
+    Event: [{type: Schema.Types.ObjectId ,
             ref: 'Event'
-        }
+        }]
         
 
 }, {
