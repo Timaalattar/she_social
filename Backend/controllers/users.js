@@ -1,7 +1,6 @@
 const { json } = require('express')
 const User = require('../models/User')
 const Event = require('../models/Event')
-
 //Require bcrypt
 const bcrypt = require('bcrypt')
 const saltRounds = 10;
@@ -110,11 +109,9 @@ async function user_delete(req,res) {
 
 async function event_create_post(req,res) {
     // Find the user that created the tweet
-    // console.log('user',req.user);
-    let user = await User.findById(req.params.userId)
+    let user = await User.findById(req.user.id)
     //Create the tweet
     let newEvent = await Event.create(req.body)
-    // let newEvent = await Event.create(req.body)
     // Push the new tweet ID into the user's 'tweets' property
     console.log(user)
     user.Event.push(newEvent._id)

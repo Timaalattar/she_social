@@ -19,6 +19,6 @@ router.put('/users/:userId', usersController.user_update_put)
 router.delete('/users/:userId', usersController.user_delete)
 
 //Creating a new event
-router.post('/users/:userId/events',isLoggedIn, usersController.event_create_post)
+router.post('/users/events',isLoggedIn, usersController.event_create_post)
 
 module.exports = router
