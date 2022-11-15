@@ -109,26 +109,40 @@ async function user_delete(req,res) {
 }
 
 async function event_create_post(req,res) {
-    // Find the user that created the tweet
+    // Find the user that will create the event
     // console.log('user',req.user);
     let user = await User.findById(req.params.userId)
-    //Create the tweet
+    //logic for creating the event
     let newEvent = await Event.create(req.body)
-    // let newEvent = await Event.create(req.body)
-    // Push the new tweet ID into the user's 'tweets' property
+    // Push the new event ID into the user's 'Event' property
     console.log(user)
     user.Event.push(newEvent._id)
     // Save our changes to the user
     await user.save()
     // Respond with the user data
-    // Populate the tweet data
+    // Populate the Event data
     await user.populate('Event')
     console.log(Event)
-    res.json(user)
-
-    
+    res.json(user)   
 }
 
+async function confirmed_create_post(req,res) {
+    // Find the user that will create the event
+    // console.log('user',req.user);
+    let user = await User.findById(req.params.userId)
+    //logic for creating the event
+    let newEvent = await Event.create(req.body)
+    // Push the new event ID into the user's 'Event' property
+    console.log(user)
+    user.Event.push(newEvent._id)
+    // Save our changes to the user
+    await user.save()
+    // Respond with the user data
+    // Populate the Event data
+    await user.populate('Event')
+    console.log(Event)
+    res.json(user)   
+}
 
 module.exports = {
     user_create_post,
@@ -137,4 +151,5 @@ module.exports = {
     user_update_put,
     user_delete,
     event_create_post,
+    confirmed_create_post,
 }
