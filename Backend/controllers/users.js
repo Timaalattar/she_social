@@ -1,7 +1,6 @@
 const { json } = require('express')
 const User = require('../models/User')
 const Event = require('../models/Event')
-
 //Require bcrypt
 const bcrypt = require('bcrypt')
 const saltRounds = 10;
@@ -109,9 +108,10 @@ async function user_delete(req,res) {
 }
 
 async function event_create_post(req,res) {
+
     // Find the user that will create the event
     // console.log('user',req.user);
-    let user = await User.findById(req.params.userId)
+    let user = await User.findById(req.user.id)
     //logic for creating the event
     let newEvent = await Event.create(req.body)
     // Push the new event ID into the user's 'Event' property
@@ -129,7 +129,7 @@ async function event_create_post(req,res) {
 async function confirmed_create_post(req,res) {
     // Find the user that will create the event
     // console.log('user',req.user);
-    let user = await User.findById(req.params.userId)
+    let user = await User.findById(eq.params.userId)
     //logic for creating the event
     let newEvent = await Event.create(req.body)
     // Push the new event ID into the user's 'Event' property

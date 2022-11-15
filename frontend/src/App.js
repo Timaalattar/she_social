@@ -80,6 +80,7 @@ function App() {
       <Routes>
         <Route path='/home' element={isAuth ? <HomePage /> : <Signin login={loginHandler}></Signin>} />
         <Route path='/profile' element={<ProfilePage />} />
+        <Route path='/CreateEvent' element={<CreateEvent />} />
         <Route path='*' element={<HomePage />} />
         <Route path='/events' element={<EventList/>} />
         <Route path="/signup" element={<Signup register={registerHandler}></Signup>}></Route>
