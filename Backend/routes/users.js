@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const usersController = require('../controllers/users')
+const isLoggedIn = require('../Helper/isLoggedIn')
 
 //Creating a new user)
 router.post('/users', usersController.user_create_post)
@@ -18,6 +19,6 @@ router.put('/users/:userId', usersController.user_update_put)
 router.delete('/users/:userId', usersController.user_delete)
 
 //Creating a new event
-router.post('/users/:userId/events', usersController.event_create_post)
+router.post('/users/:userId/events',isLoggedIn, usersController.event_create_post)
 
 module.exports = router
