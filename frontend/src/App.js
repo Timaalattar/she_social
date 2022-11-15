@@ -1,16 +1,21 @@
 import './App.css';
-
+// import NavBar from './components/NavBar/NavBar'
+// import HomePage from './components/HomePage/HomePage'
+// import EditPage from './components/EditPage/EditPage'
+// import ProfilePage from './components/ProfilePage/ProfilePage';
+// import DetailPage from './components/DetailPage/DetailPage';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-// 
 import Signin from './Components/User/Signin'
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import jwt_decode from 'jwt-decode';
 
+
+
 function App() {
 
   const [isAuth, setIsAuth] = useState(false);
-  const [User, setUser] = useState({});
+  const [user, setUser] = useState({});
 
   useEffect(() => {
     let token = localStorage.getItem("token");
@@ -40,8 +45,9 @@ function App() {
     });
   }
 
+  
   const loginHandler = (cred) => {
-    axios.post("http://localhost:4000/auth/signin", cred)
+    axios.post("http://localhost:4000/users/login", cred)
     .then(res => {
       console.log(res.data.token)
 
@@ -70,7 +76,13 @@ function App() {
       <NavBar onLogoutHandler={onLogoutHandler} isAuth={isAuth} user={user}/>
       <div className="App">
         <Routes>
-         
+          {/* <Route path='/home' element={isAuth ? <HomePage /> : <Signin login={loginHandler}></Signin>} />
+          <Route path='/edit/:userId' element={<EditPage />} />
+          <Route path='/profile' element={<ProfilePage />} />
+          <Route path='/detail/:tweetId' element={<DetailPage />} />
+          <Route path='*' element={<HomePage />} />
+
+          <Route path="/signup" element={<Signup register={registerHandler}></Signup>}></Route> */}
           <Route path="/signin" element={isAuth ? <HomePage></HomePage> : <Signin login={loginHandler}></Signin>}></Route>
         </Routes>
       </div>

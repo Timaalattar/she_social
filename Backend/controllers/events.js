@@ -2,29 +2,6 @@ const { json } = require('express')
 const Event = require('../models/Event')
 const User = require('../models/User')
 
-async function event_create_post(req,res) {
-    
-    // for testing purposes
-    console.log('Req Body:', req.body)
-    
-    try {
-      let newEvent= await Event.create({
-        
-        EventName: req.body.EventName,
-        Date: req.body.Date,
-        Time: req.body.Time,
-        Locate: req.body.Locate,
-        Category:req.body.Category,
-        Description:req.body.Description
-        
-        })
-res.json(newEvent).status(200)
-
-    } catch (err) {
-        res.json(err)
-    }
-}
-
 async function event_details_get(req,res) {
     
     try {
@@ -77,7 +54,6 @@ async function event_search_get(req,res) {
 }
 
 module.exports = {
-    event_create_post,
     event_details_get,
     event_update_put,
     event_delete,

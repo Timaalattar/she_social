@@ -1,5 +1,6 @@
 const { json } = require('express')
-const User = require('../../models/User')
+const User = require('../models/User')
+const Event = require('../models/Event')
 
 //Require bcrypt
 const bcrypt = require('bcrypt')
@@ -19,6 +20,7 @@ async function user_create_post(req,res) {
             username:req.body.username,
             email: req.body.email,
             password: hashedPassword,
+            // Event: []
         })
         res.json(newUser)
     } catch (err) {
@@ -51,7 +53,8 @@ async function user_login_post(req,res) {
     //if password is a match we create a token 
         const payload = {
             user: {
-                id: user._id
+                id: user._id,
+                FirstName: user.FirstName
             }
         }
 
@@ -64,6 +67,8 @@ async function user_login_post(req,res) {
                 res.json({token}).status(200);
             }
         )
+
+        req.user = payload
 
     } catch (error) {
         console.log(error)
@@ -103,10 +108,33 @@ async function user_delete(req,res) {
     }
 }
 
+async function event_create_post(req,res) {
+    // Find the user that created the tweet
+    // console.log('user',req.user);
+    let user = await User.findById(req.params.userId)
+    //Create the tweet
+    let newEvent = await Event.create(req.body)
+    // let newEvent = await Event.create(req.body)
+    // Push the new tweet ID into the user's 'tweets' property
+    console.log(user)
+    user.Event.push(newEvent._id)
+    // Save our changes to the user
+    await user.save()
+    // Respond with the user data
+    // Populate the tweet data
+    await user.populate('Event')
+    console.log(Event)
+    res.json(user)
+
+    
+}
+
+
 module.exports = {
     user_create_post,
     user_login_post,
     user_details_get,
     user_update_put,
-    user_delete
+    user_delete,
+    event_create_post,
 }

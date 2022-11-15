@@ -12,10 +12,15 @@ const EventModel = new Schema ({
     Description: {type:String, require: true},
 
     //Associate the user model
-    User: [{type: Schema.Types.ObjectId ,
+    User: {type: Schema.Types.ObjectId ,
         ref: 'User'
+    },
+    Confirmed: [{type: Schema.Types.ObjectId ,
+        ref: 'Confirmed'
     }]
     
+
+
 }, {
     timestamps: true
 })
