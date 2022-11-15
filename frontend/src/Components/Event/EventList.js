@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css' 
-import { Route } from 'react-router-dom'
+import { Route , NavLink} from 'react-router-dom'
 import axios from 'axios'
 import './EventList.css'
 
@@ -29,8 +29,8 @@ function EventList() {
             <br></br><p>Category : {event.Category}</p>
             <br></br><p>Description : {event.Description}</p>
 
-            {/* <Link to={`/detail/${event._id}`} ></Link> */}
-                <button>View</button>
+                {/* <button>View</button> */}
+            <NavLink to={`/events/${event._id}`} >View</NavLink>
           </div>
         ) : null}
 
