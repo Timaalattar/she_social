@@ -129,7 +129,7 @@ async function event_create_post(req,res) {
 async function confirmed_create_post(req,res) {
     // Find the user that will create the event
     // console.log('user',req.user);
-    let user = await User.findById(req.params.userId)
+    let user = await User.findById(req.user.id)
     //logic for creating the event
     let newEvent = await Event.create(req.body)
     // Push the new event ID into the user's 'Event' property
