@@ -154,6 +154,4 @@ module.exports = {
     user_delete,
     event_create_post,
     event_create_username_post
-=======
-
 }
