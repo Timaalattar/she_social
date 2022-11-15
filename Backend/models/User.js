@@ -15,8 +15,7 @@ const UserModel = new Schema ({
             ref: 'Event'
         }],
     Confirmed: [{type: Schema.Types.ObjectId ,
-            ref: 'Confirmed'
-        }]
+            ref: 'Confirmed'}]
         
 
 }, {

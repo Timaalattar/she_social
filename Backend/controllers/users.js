@@ -53,7 +53,8 @@ async function user_login_post(req,res) {
     //if password is a match we create a token 
         const payload = {
             user: {
-                id: user._id
+                id: user._id,
+                FirstName: user.FirstName
             }
         }
 
