@@ -1,8 +1,40 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css' 
+import { Route } from 'react-router-dom'
+import axios from 'axios'
+import './EventList.css'
 
 function EventList() {
-  return (
-    <div>EventList</div>
+  <h1>sheSocial Events</h1>
+
+    const [eventsList, setEventsList] = useState([])
+    useEffect(()=> {
+        event_findall_get()
+    }, [])
+    
+    const event_findall_get = () => {
+        axios.get('http://localhost:4000/events/')
+        .then(res => setEventsList(res.data))
+        .catch(err => console.log(err))
+      }
+ 
+    return (
+    <div>
+   {eventsList.length ? eventsList.map(event => 
+          <div className='event-container' key={event._id}>
+            <h2>{event.EventName}</h2>
+            <br></br><p>Time: {event.Time}</p>
+            <br></br><p>Date: {event.Date}</p>
+            <br></br><p>Location: {event.Locate}</p>
+            <br></br><p>{event.Description}</p>
+
+            {/* <Link to={`/detail/${event._id}`} ></Link> */}
+                <button>View</button>
+          </div>
+        ) : null}
+
+
+    </div>
   )
 }
 
