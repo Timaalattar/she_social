@@ -10,6 +10,7 @@ function NavBar(props) {
           <ul className="navbar-ul">
           <li><Link to='/home'>Home</Link></li>
           <li><Link to='/profile'>Profile</Link></li>
+          <li><Link to='/CreateEvent'>Create Event</Link></li>
           <li><Link to="/logout" onClick={props.onLogoutHandler}>Logout</Link></li>
           {props.user ? "Welcome " + props.user.user.FirstName : null}
           </ul>
