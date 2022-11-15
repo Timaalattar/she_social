@@ -53,9 +53,23 @@ async function event_search_get(req,res) {
     }
 }
 
+async function event_findall_get(req,res) {
+    
+    try {
+        let event = await Event.find()
+        res.json(event)
+        console.log(event)
+
+    } catch (err) {
+        
+        res.json(err)
+    }
+}
+
 module.exports = {
     event_details_get,
     event_update_put,
     event_delete,
-    event_search_get
+    event_search_get,
+    event_findall_get,
 }
