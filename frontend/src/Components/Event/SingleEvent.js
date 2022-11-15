@@ -4,26 +4,32 @@ import axios from 'axios'
 
 function SingleEvent() {
 
-const [event, setEvent] = useState({})
+const [singleEvent, setsingleEvent] = useState({})
 
 const params = useParams()    
 
-console.log(params)
+// console.log(params)
 
 useEffect(() => {
-  axios.get(`http://localhost:4000/events/'${params.eventId}`)
-  .then(res => setEvent(res.data))
+  event_details_get()
 }, [])
+const event_details_get = () => {
+axios.get(`http://localhost:4000/events/${params.eventId}`)
+  .then(res => setsingleEvent(res.data))
+
+
+}
 return (
   <div>
-      {event ? 
+      {singleEvent ? 
       <div>
         
-          <p>{event.Date}</p>
-          <p>{tweet.Time}</p>
-          <p>{event.Locate}</p>
-          <p>{event.Category}</p>
-          <p>{event.Description}</p>
+        <h2>{singleEvent.EventName}</h2>
+            <br></br><p>Time: {singleEvent.Time}</p>
+            <br></br><p>Date: {singleEvent.Date}</p>
+            <br></br><p>Location: {singleEvent.Locate}</p>
+            <br></br><p>{singleEvent.Description}</p>
+
 
       </div>    
   : null} 
