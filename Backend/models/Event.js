@@ -8,6 +8,8 @@ const EventModel = new Schema ({
     Date: {type:String, require: true},
     Time: {type:String, require: true},
     Locate: {type:String, require: true},
+    lat:{type:String, require: true},
+    lng:{type:String, require: true},
     Category: {type:String, require: true},
     Description: {type:String, require: true},
 
