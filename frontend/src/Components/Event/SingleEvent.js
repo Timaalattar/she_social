@@ -28,7 +28,7 @@ return (
             <br></br><p>Time: {singleEvent.Time}</p>
             <br></br><p>Date: {singleEvent.Date}</p>
             <br></br><p>Location: {singleEvent.Locate}</p>
-            <br></br><p>{singleEvent.Description}</p>
+            <br></br><p>Description: {singleEvent.Description}</p>
 
 
       </div>    
