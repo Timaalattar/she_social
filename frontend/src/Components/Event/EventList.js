@@ -4,7 +4,7 @@ import { Route , NavLink} from 'react-router-dom'
 import axios from 'axios'
 import './EventList.css'
 import EventMap from './EventMap'
-import {GoogleMap, useLoadScript, Marker } from '@react-google-maps/api'
+import {GoogleMap, useLoadScript, MarkerF } from '@react-google-maps/api'
 import usePlacesAutocomplete, {getGeocode,getLatLng} from 'use-places-autocomplete'
 
 
@@ -80,7 +80,7 @@ function Map(props){
        mapContainerClassName='map-container'
        zoom={10} center={center} >
         
-        <Marker position={center}></Marker>
+        <MarkerF position={center}></MarkerF>
 
       </GoogleMap>
 

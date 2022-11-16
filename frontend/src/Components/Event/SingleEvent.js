@@ -19,8 +19,14 @@ const event_details_get = () => {
 axios.get(`http://localhost:4000/events/${params.eventId}`)
   .then(res => setsingleEvent(res.data))
 
-
 }
+
+  event_confirmation = () => {
+    axios.post(`http://events/${params.eventId}/confirmed`)
+    .then()
+  }
+
+
 return (
   <div>
       {singleEvent ? 
