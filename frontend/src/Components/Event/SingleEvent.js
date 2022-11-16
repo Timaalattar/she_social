@@ -5,7 +5,6 @@ import axios from 'axios'
 function SingleEvent() {
 
 const [singleEvent, setsingleEvent] = useState({})
-const [isConfirmed, setIsConfirmed] = useState(false);
 
 const params = useParams()    
 
@@ -21,12 +20,6 @@ axios.get(`http://localhost:4000/events/${params.eventId}`)
 
 }
 
-  event_confirmation = () => {
-    axios.post(`http://events/${params.eventId}/confirmed`)
-    .then()
-  }
-
-
 return (
   <div>
       {singleEvent ? 
@@ -38,7 +31,7 @@ return (
             <br></br><p>Location: {singleEvent.Locate}</p>
             <br></br><p>{singleEvent.Description}</p>
 
-            <button>Confirmed</button> 
+            <button onClick={confirmationHandler}>Confirmed</button> 
 
       </div>    
   : null} 
