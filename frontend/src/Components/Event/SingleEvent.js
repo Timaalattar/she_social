@@ -40,6 +40,7 @@ return (
             <br></br><p>Date: {singleEvent.Date}</p>
             <br></br><p>Category : {singleEvent.Category}</p>
             <br></br><p>Description: {singleEvent.Description}</p>
+            
             <br></br><p>Location: {singleEvent.Locate}</p>
             <Map className="map" lat={singleEvent.lat} lng={singleEvent.lng} />
 
