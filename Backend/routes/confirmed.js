@@ -5,13 +5,13 @@ const confirmedController = require('../controllers/confirmed')
 //confirming for an event
 router.post('/events/:eventId/confirmed', confirmedController.confirmed_create_post)
 
-//View list of confirmations
+//View list of events you confirmed to
 router.get('/user/:userId/confirmed', confirmedController.confirmed_details_get)
 
 //delete detail confrimaton
 router.delete('/user/:userId/confirmed', confirmedController.confirmed_delete)
 
 //list all event attendees
-router.get('/users/events/:eventid', confirmedController.confirm_search_get)
+router.get('/users/events/:eventId', confirmedController.confirm_search_get)
 
 module.exports = router

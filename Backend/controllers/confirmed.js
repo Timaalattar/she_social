@@ -8,7 +8,7 @@ async function confirmed_create_post(req,res) {
     // Find the user that will create the event
    
     // let user = await User.findById(req.user.id)
-    let user = await User.findById('63732f75f4b6b2a078ab8218')
+    let user = await User.findById('63748af284067859a90e2500')
     let event = await Event.findById(req.params.eventId)
     //logic for creating the event
     console.log(user)
@@ -36,7 +36,7 @@ async function confirmed_create_post(req,res) {
 
 async function confirmed_details_get(req,res) {
     try {
-        const confirmed = await Confirmed.findById(req.params.confirmedid)
+        const confirmed = await Confirmed.findById(req.params.confirmedId)
         res.json(confirmed)
 
     } catch (err) {
@@ -46,7 +46,7 @@ async function confirmed_details_get(req,res) {
 
 async function confirmed_delete(req,res) {
     try {
-        let deleteConfirmation= await User.findByIdAndDelete(req.params.confirmedid)
+        let deleteConfirmation= await User.findByIdAndDelete(req.params.confirmedId)
         // res.json({message: 'Confirmation delete successfully'})
         res.json(deleteConfirmation)
 
