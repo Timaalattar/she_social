@@ -1,6 +1,7 @@
 import React from 'react'
 import './NavBar.css'
 import { Link } from 'react-router-dom'
+import './NavBar.css'
 
 function NavBar(props) {
   return (
@@ -8,6 +9,7 @@ function NavBar(props) {
     {props.isAuth ? (
         <div>
           <ul className="navbar-ul">
+          <img className="logo" src="https://i.imgur.com/7AUifnk.png"  />
           <li><Link to='/home'>Home</Link></li>
           <li><Link to={`/profile/${props.user.user.id}`}>Profile</Link></li>
 
@@ -21,6 +23,7 @@ function NavBar(props) {
      ) : (
       <div>
       <ul className="navbar-ul">
+      <img className="logo" src="https://i.imgur.com/7AUifnk.png"  />
       <li><Link to='/home'>Home</Link></li>
       <li><Link to='/events'>Events</Link></li>
       <li><Link to="/signup">Signup</Link></li>
