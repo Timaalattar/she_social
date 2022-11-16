@@ -5,12 +5,14 @@ import axios from 'axios'
 function SingleEvent() {
 
 const [singleEvent, setsingleEvent] = useState({})
+const [isConfirmed, setIsConfirmed] = useState(false);
 
 const params = useParams()    
 
 // console.log(params)
 
 useEffect(() => {
+
   event_details_get()
 }, [])
 const event_details_get = () => {
@@ -30,6 +32,7 @@ return (
             <br></br><p>Location: {singleEvent.Locate}</p>
             <br></br><p>{singleEvent.Description}</p>
 
+            <button>Confirmed</button> 
 
       </div>    
   : null} 

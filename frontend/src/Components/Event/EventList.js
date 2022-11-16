@@ -13,7 +13,9 @@ function EventList() {
     }, [])
     
     const event_findall_get = () => {
+
         axios.get('http://localhost:4000/events/')
+   
         .then(res => setEventsList(res.data))
         .catch(err => console.log(err))
       }
