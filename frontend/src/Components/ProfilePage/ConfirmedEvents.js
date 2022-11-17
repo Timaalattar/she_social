@@ -18,7 +18,7 @@ function ConfirmedEvents() {
   
   const params = useParams()
     
-  const [event, setEvent] = useState([])
+  const [user, setUser] = useState({})
     useEffect(()=> {
         user_confirmation_get()
       
@@ -27,13 +27,16 @@ function ConfirmedEvents() {
     const user_confirmation_get = () => {
         axios.get(`http://localhost:4000/users/${params.userId}/confirmed`)
    
-        .then(res => setEvent(res.data))
+        .then(res => {
+         console.log(res)
+          setUser(res.data)
+        })
         .catch(err => console.log(err))
       }
  
     return (
     <div>
-   {event.length ? eventsList.map(event => 
+   {user ? user.Confirmed.map(event => 
           <div className='event-container' key={event._id}>
             <h2>{event.EventName}</h2>
             <br></br><p>Time : {event.Time}</p>
