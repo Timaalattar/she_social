@@ -2,7 +2,6 @@ import React, {useEffect, useState, useMemo } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import './EventList.css'
-import EventMap from './EventMap'
 import {GoogleMap, useLoadScript, MarkerF } from '@react-google-maps/api'
 import usePlacesAutocomplete, {getGeocode,getLatLng} from 'use-places-autocomplete'
 
@@ -12,7 +11,7 @@ function SingleEvent() {
     googleMapsApiKey: "AIzaSyDfoQb7_iRMi4sGqqEUa906kxdSIm2LNVk",
     libraries: ["places"]
   })
-  
+
 
 const [singleEvent, setsingleEvent] = useState({})
 
@@ -21,6 +20,8 @@ const params = useParams()
 // console.log(params)
 
 useEffect(() => {
+
+  
 
   event_details_get()
 }, [])
@@ -44,6 +45,7 @@ return (
             <br></br><p>Location:{singleEvent.Locate}</p>
           
             <Map className="map" lat={singleEvent.lat} lng={singleEvent.lng} />
+          
 
             {/* <button onClick={confirmationHandler}>Confirmed</button>  */}
 
@@ -59,12 +61,16 @@ function Map(props){
   let lng = parseFloat(props.lng);
   console.log(lat);
   console.log(lng);
-  const center = useMemo(() => ({ lat: lat, lng: lng}), [])
+  const center = useMemo(() => ({ lat: lat, lng: lng}), [lat, lng])
+  // const center = useMemo(() => ({ lat: lat, lng: lng}), [])
+
   const [selected, setSelected] = useState(null)
+  if(selected != null){
   console.log(selected);
-  // localStorage.setItem("lat", selected.lat)
-  // localStorage.setItem("lng", selected.lng)
+  localStorage.setItem("lat", selected.lat)
+  localStorage.setItem("lng", selected.lng)
   // props.getData(selected) ;
+  }
 
 
   return (
@@ -77,12 +83,14 @@ function Map(props){
        mapContainerClassName='map-container'
        zoom={10} center={center} >
         
-        <MarkerF position={center}></MarkerF>
+       
+        <MarkerF position={selected}></MarkerF>     
 
       </GoogleMap>
 
       </>
   )
 }
+
 
 export default SingleEvent

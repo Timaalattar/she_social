@@ -23,6 +23,8 @@ function EventList() {
     
   const [eventsList, setEventsList] = useState([])
     useEffect(()=> {
+
+      
         event_findall_get()
       
   }, [])
