@@ -12,6 +12,7 @@
     "@headlessui/react": "^1.7.4",
     "@react-google-maps/api": "^2.17.0",
     "bcrypt": "^5.1.0",
+    "cloudinary": "^1.32.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
