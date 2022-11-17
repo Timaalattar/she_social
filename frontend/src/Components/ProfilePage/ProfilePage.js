@@ -10,8 +10,8 @@ function ProfilePage(props) {
       <div>
       <ul className="profilenavbar">
       <li><Link to={`/profile/${props.user.id}/Edit`}>Edit Profile</Link></li>
-      <li><Link to="/profile/createdevents">Hosted Events</Link></li>
-      <li><Link to="/profile/confirmedevents">Confrimed Events</Link></li>
+      <li><Link to={`/profile/${props.user.id}/Created`}>Hosted Events</Link></li>
+      <li><Link to={`/profile/${props.user.id}/Confirmed`}>Confrimed Events</Link></li>
       </ul>
     </div>
     </>

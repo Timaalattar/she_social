@@ -2,8 +2,8 @@ import './App.css';
 import NavBar from './Components/NavBar/NavBar'
 import ProfilePage from './Components/ProfilePage/ProfilePage'
 import EditProfile from './Components/ProfilePage/EditProfile'
-// import ConfirmedEvent from './Components/ProfilePage/ConfirmedEvents'
-// import HostedEvents from './components/ProfilePage/HostedEvents'
+import ConfirmedEvents from './Components/ProfilePage/ConfirmedEvents'
+import HostedEvents from './Components/ProfilePage/HostedEvents'
 import HomePage from './Components/HomePage/HomePage'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Signup from './Components/User/Signup'
@@ -97,8 +97,8 @@ console.log(user)
         <Route path='/home' element={isAuth ? <HomePage /> : <Signin login={loginHandler}></Signin>} />
         <Route path='/profile/:userId' element={<ProfilePage user={user.user}/>} />
         <Route path='/profile/:userId/Edit' element={<EditProfile />} />
-        {/* <Route path='/profile/createdevents/' element={<EditProfile />} /> */}
-        <Route path='/profile/:userId/Edit' element={<EditProfile />} />
+        <Route path='/profile/:userId/Created/' element={<HostedEvents />} />
+        <Route path='/profile/:userId/Confirmed' element={<ConfirmedEvents />} />
         <Route path='/events/:eventId' element={<SingleEvent user={user}/>} />
         <Route path='/CreateEvent' element={<CreateEvent />} />
         <Route path='*' element={<HomePage />} />

@@ -2,42 +2,45 @@ import React, {useState, useEffect, useMemo} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css' 
 import { Route , NavLink} from 'react-router-dom'
 import axios from 'axios'
-import './EventList.css'
-import EventMap from './EventMap'
+import './ProfilePage.css'
 import {GoogleMap, useLoadScript, MarkerF } from '@react-google-maps/api'
+import { useParams } from 'react-router-dom'
 import usePlacesAutocomplete, {getGeocode,getLatLng} from 'use-places-autocomplete'
 
 
 
 
-function EventList() {
+function HostedEvents() {
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: "AIzaSyDfoQb7_iRMi4sGqqEUa906kxdSIm2LNVk",
     libraries: ["places"]
   })
   
-
-  // <h1>sheSocial Events</h1>
+const params = useParams()
 
     
   const [eventsList, setEventsList] = useState([])
     useEffect(()=> {
-        event_findall_get()
+        user_confirmation_get()
       
   }, [])
     
-    const event_findall_get = () => {
-        axios.get('http://localhost:4000/events/')
+    const user_confirmation_get = () => {
+
+        axios.get(`http://localhost:4000/users/${params.userId}/events`)
    
-        .then(res => setEventsList(res.data))
+        .then(res =>{
+            console.log(res.data)
+        setEventsList(res.data)
+    })
         .catch(err => console.log(err))
       }
  
     return (
     <div>
-   {eventsList.length ? eventsList.map(event => 
-          <div className='event-container' key={event._id}>
+   {eventsList.length ? eventsList.map(user => 
+          <div className='created-event-container' key={user._id}>
             <h2>{event.EventName}</h2>
             <br></br><p>Time : {event.Time}</p>
             <br></br><p>Date : {event.Date}</p>
@@ -78,7 +81,7 @@ function Map(props){
 
       <GoogleMap 
        mapContainerClassName='map-container'
-       zoom={10} center={center} >
+       zoom={15} center={center} >
         
         <MarkerF position={center}></MarkerF>
 
@@ -88,4 +91,4 @@ function Map(props){
   )
 }
 
-export default EventList
+export default HostedEvents

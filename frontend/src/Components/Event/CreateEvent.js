@@ -16,9 +16,9 @@ function CreateEvent() {
 
   const event_create_post = () => {
       const token = localStorage.getItem('token')
-      axios.post(`http://localhost:4000/users/events`,
+      axios.post(`http://localhost:4000/users/events/create`, formData,
       {
-        headers: {Authorization: token}
+        headers: {'Authorization': token}
       })
       .catch(err => console.log(err))
   }

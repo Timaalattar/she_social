@@ -2,15 +2,14 @@ import React, {useState, useEffect, useMemo} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css' 
 import { Route , NavLink} from 'react-router-dom'
 import axios from 'axios'
-import './EventList.css'
-import EventMap from './EventMap'
+import './ProfilePage.css'
 import {GoogleMap, useLoadScript, MarkerF } from '@react-google-maps/api'
 import usePlacesAutocomplete, {getGeocode,getLatLng} from 'use-places-autocomplete'
 
 
 
 
-function EventList() {
+function ConfirmedEvents() {
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: "AIzaSyDfoQb7_iRMi4sGqqEUa906kxdSIm2LNVk",
@@ -88,4 +87,4 @@ function Map(props){
   )
 }
 
-export default EventList
+export default ConfirmedEvents

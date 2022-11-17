@@ -78,7 +78,7 @@ function Map(props){
 
       <GoogleMap 
        mapContainerClassName='map-container'
-       zoom={10} center={center} >
+       zoom={15} center={center} >
         
         <MarkerF position={center}></MarkerF>
 
