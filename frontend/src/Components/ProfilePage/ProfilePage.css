@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .gradient-custom {
     /* fallback for old browsers */
     background: #f6d365;
@@ -8,3 +9,32 @@
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))
   }
+=======
+.navbar-ul {
+    background-color: #ECE7E6;
+    display: flex;
+    height: 80px;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0;
+}
+
+.navbar-ul > li {
+    list-style-type: none;
+    text-decoration: none;
+    margin: 0 30px 0 30px;
+}
+.navbar-ul > li:hover {
+    background-color: grey;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+
+.logo {
+    width: 100px;
+    height: 80px;
+    margin-right: 600px;
+}
+
+>>>>>>> 712f972a69a398dc75655c06b64fae0ce1755c0f

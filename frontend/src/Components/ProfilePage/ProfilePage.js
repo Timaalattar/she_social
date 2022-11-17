@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import './ProfilePage.css'
@@ -75,7 +76,26 @@ const handleSubmit = (e) => {
 
       </div>
 
+=======
+import React from 'react'
+import './ProfilePage.css'
+import { Link } from 'react-router-dom'
+
+
+function ProfilePage(props) {
+  // console.log(props)
+  return (
+    <>
+      <div>
+      <ul className="profilenavbar">
+      <li><Link to={`/profile/${props.user.id}/Edit`}>Edit Profile</Link></li>
+      <li><Link to="/profile/createdevents">Hosted Events</Link></li>
+      <li><Link to="/profile/confirmedevents">Confrimed Events</Link></li>
+      </ul>
+    </div>
+    </>
+>>>>>>> 712f972a69a398dc75655c06b64fae0ce1755c0f
   )
 }
 
-export default ProfilePage
+export default ProfilePage;

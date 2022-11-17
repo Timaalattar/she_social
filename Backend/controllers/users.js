@@ -147,6 +147,17 @@ async function event_create_username_post(req,res) {
     res.json(newEvent)   
 }
 
+async function user_events_get(req,res) {
+try {
+    const myEvents= await User.findById(req.params.userId)
+    await myEvents.populate('Event')
+    res.json(myEvents)
+
+} catch (err) {
+    res.json(err)
+}
+}
+
 module.exports = {
     user_create_post,
     user_login_post,
@@ -154,5 +165,6 @@ module.exports = {
     user_update_put,
     user_delete,
     event_create_post,
-    event_create_username_post
+    event_create_username_post,
+    user_events_get
 }
