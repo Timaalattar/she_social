@@ -12,6 +12,7 @@ import SingleEvent from './Components/Event/SingleEvent';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import jwt_decode from 'jwt-decode';
+import { useParams } from 'react-router-dom'
 
 
 
@@ -19,13 +20,15 @@ function App() {
 
   const [isAuth, setIsAuth] = useState(false);
   const [user, setUser] = useState({});
-  const [isConfirmed, setIsConfrimed] = useState(false);
+
+  const params = useParams()
 
   useEffect(() => {
     let token = localStorage.getItem("token");
 
     if(token != null){
       let user = jwt_decode(token);
+      console.log("useEffect" + user);
 
       if(user){
         setIsAuth(true);
@@ -76,11 +79,13 @@ function App() {
   }
 
   const confirmationHandler = (confirm) => {
-    axios.post(`http://events/${params.eventId}/confirmed`, confirm)
-    setIsConfrimed(true);
+    console.log(params)
+    debugger
+    axios.post(`http://localhost:4000/events/${params.eventId}/confirmed`, user.user.id)
+    .then(() => setIsConfrimed(true))
   }
 
-
+console.log(user)
 
   return (
     <Router>
@@ -88,9 +93,9 @@ function App() {
     <div className="App">
       <Routes>
         <Route path='/home' element={isAuth ? <HomePage /> : <Signin login={loginHandler}></Signin>} />
-        <Route path='/profile/:userId' element={<ProfilePage />} />
+        <Route path='/profile/:userId' element={<ProfilePage user={user.user}/>} />
         <Route path='/profile/:userId/Edit' element={<EditProfile />} />
-        <Route path='/events/:eventId' element={<SingleEvent />} />
+        <Route path='/events/:eventId' element={<SingleEvent user={user}/>} />
         <Route path='/CreateEvent' element={<CreateEvent />} />
         <Route path='*' element={<HomePage />} />
         <Route path='/events' element={<EventList/>} />
