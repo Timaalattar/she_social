@@ -1,7 +1,12 @@
 .App {
   text-align: center;
-  background-color:  #baaeab;
+  background-color: #f8edeb;
+  width: 100vw;
+  height: 100vh;
+
+  
 }
+
 
 .App-logo {
   height: 40vmin;
@@ -38,3 +43,15 @@
     transform: rotate(360deg);
   }
 }
+
+.button {
+  position: absolute;
+  top:50%;
+  background:#fae1dd;
+}
+
+h1 {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+

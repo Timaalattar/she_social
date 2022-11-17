@@ -82,9 +82,9 @@ const navigate = useNavigate()
         <input  className='input' name="Date" value={formData.Date} onChange={handleChange} placeholder="Date" /> <br /><br />
         <input  className='input' name="Time" value={formData.Time} onChange={handleChange} placeholder="Time" /> <br /><br /> 
         {/* <input  className='input' name="Locate" value={formData.Locate} onChange={handleChange}  placeholder="Locate" /> <br /><br /> */}
-        <div> <EventMap getData={getData}/> </div> <br /><br />
         <input  className='input' name="Category" value={formData.Category} onChange={handleChange} placeholder="Category" /> <br /><br />
         <input  className='input' name="Description" value={formData.Description} onChange={handleChange} placeholder="Description" /> <br /><br />
+        <div> <EventMap className="map" getData={getData}/> </div> <br /><br /><br /><br />
         <button className='submit' type="submit">Submit</button>
         <br />
       </form>
