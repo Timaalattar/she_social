@@ -1,6 +1,7 @@
 import './App.css';
 import NavBar from './Components/NavBar/NavBar'
 import ProfilePage from './Components/ProfilePage/ProfilePage'
+import EditProfile from './Components/ProfilePage/EditProfile'
 import HomePage from './Components/HomePage/HomePage'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Signup from './Components/User/Signup'
@@ -18,6 +19,7 @@ function App() {
 
   const [isAuth, setIsAuth] = useState(false);
   const [user, setUser] = useState({});
+  const [isConfirmed, setIsConfrimed] = useState(false);
 
   useEffect(() => {
     let token = localStorage.getItem("token");
@@ -73,6 +75,13 @@ function App() {
     setUser(null);
   }
 
+  const confirmationHandler = (confirm) => {
+    axios.post(`http://events/${params.eventId}/confirmed`, confirm)
+    setIsConfrimed(true);
+  }
+
+
+
   return (
     <Router>
     <NavBar onLogoutHandler={onLogoutHandler} isAuth={isAuth} user={user}/>
@@ -80,6 +89,7 @@ function App() {
       <Routes>
         <Route path='/home' element={isAuth ? <HomePage /> : <Signin login={loginHandler}></Signin>} />
         <Route path='/profile/:userId' element={<ProfilePage />} />
+        <Route path='/profile/:userId/Edit' element={<EditProfile />} />
         <Route path='/events/:eventId' element={<SingleEvent />} />
         <Route path='/CreateEvent' element={<CreateEvent />} />
         <Route path='*' element={<HomePage />} />
