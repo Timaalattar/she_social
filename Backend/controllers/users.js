@@ -53,7 +53,8 @@ async function user_login_post(req,res) {
         const payload = {
             user: {
                 id: user._id,
-                FirstName: user.FirstName
+                FirstName: user.FirstName,
+                username: user.username
             }
         }
 
