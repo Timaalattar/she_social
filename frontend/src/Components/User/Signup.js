@@ -1,11 +1,16 @@
 import React, {useState} from 'react'
 import {Container, Form, Button} from "react-bootstrap";
 import './Signup.css'
+import { useNavigate,useParams } from "react-router-dom";
+
+// const Navigate = useNavigate();
+
 
 export default function Signup(props) {
 
     const [newUser, setNewUser] = useState({});
-
+    // const params = useParams()
+    const navigate = useNavigate()
     const changeHandler = (e) => {
         const user = { ...newUser };
         user[e.target.name] = e.target.value;
@@ -15,12 +20,18 @@ export default function Signup(props) {
 
     const regsiterHandler = () => {
         props.register(newUser)
-    }
+        // /profile/${props.user.user.id}
+        navigate(`/signin`)
+     }
 
   return (
+
     <div>
        <br></br>
         <h1>Join She Social today</h1>
+    <div>'
+        <h1>Signup</h1>
+
 
         <Container className='form-signup-1'>
             <Form.Group className='form-signup'>

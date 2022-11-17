@@ -21,8 +21,10 @@ router.delete('/users/:userId', usersController.user_delete)
 //Creating a new event
 router.post('/users/events',isLoggedIn, usersController.event_create_post)
 
-
 //username for Creating an event
 router.post('/users/events/create', isLoggedIn, usersController.event_create_username_post)
+
+//View events hosted by the user
+router.get('/users/:userId/events', usersController.user_events_get)
 
 module.exports = router

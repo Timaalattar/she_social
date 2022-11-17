@@ -49,7 +49,7 @@ function EventList() {
             <Map className="map" lat={event.lat} lng={event.lng} />
 
                 {/* <button>View</button> */}
-            <NavLink to={`/events/${event._id}`} >View</NavLink>
+            <NavLink to={`/events/${event._id}`} ><button>View</button></NavLink>
           </div>
         ) : null}
 
@@ -80,7 +80,7 @@ function Map(props){
 
       <GoogleMap 
        mapContainerClassName='map-container'
-       zoom={10} center={center} >
+       zoom={15} center={center} >
         
         <MarkerF position={center}></MarkerF>
 

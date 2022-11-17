@@ -11,7 +11,8 @@ function SingleEvent() {
     googleMapsApiKey: "AIzaSyDfoQb7_iRMi4sGqqEUa906kxdSIm2LNVk",
     libraries: ["places"]
   })
-
+  
+const [isConfirmed, setIsConfirmed] = useState(false);
 
 const [singleEvent, setsingleEvent] = useState({})
 
@@ -31,6 +32,12 @@ axios.get(`http://localhost:4000/events/${params.eventId}`)
 
 }
 
+const confirmationHandler = (confirm) => {
+  console.log(params)
+  axios.post(`http://localhost:4000/events/${params.eventId}/confirmed`, { userId: props.user.user.id})
+  .then(() => setIsConfirmed(true))
+}
+
 return (
   <div>
       {singleEvent ? 
@@ -48,6 +55,11 @@ return (
           
 
             {/* <button onClick={confirmationHandler}>Confirmed</button>  */}
+            <br></br><p>Location:{singleEvent.Locate}</p>
+          
+            <Map className="map" lat={singleEvent.lat} lng={singleEvent.lng} />
+          {isConfirmed ? <h1>Confirmed!!!</h1> : null}
+            <button onClick={confirmationHandler}>Confirmed</button> 
 
       </div>    
   : null} 
@@ -61,17 +73,13 @@ function Map(props){
   let lng = parseFloat(props.lng);
   console.log(lat);
   console.log(lng);
-  const center = useMemo(() => ({ lat: lat, lng: lng}), [lat, lng])
-  // const center = useMemo(() => ({ lat: lat, lng: lng}), [])
 
+  const center = useMemo(() => ({ lat: lat, lng: lng}), [lat,lng])
   const [selected, setSelected] = useState(null)
-  if(selected != null){
   console.log(selected);
-  localStorage.setItem("lat", selected.lat)
-  localStorage.setItem("lng", selected.lng)
+  // localStorage.setItem("lat", selected.lat)
+  // localStorage.setItem("lng", selected.lng)
   // props.getData(selected) ;
-  }
-
 
   return (
       <>
@@ -85,12 +93,10 @@ function Map(props){
         
        
         <MarkerF position={selected}></MarkerF>     
-
       </GoogleMap>
 
       </>
   )
 }
-
 
 export default SingleEvent
