@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {Container, Form, Button} from "react-bootstrap";
+import './Signin.css'
 
 export default function Signin(props) {
 
@@ -18,22 +19,23 @@ export default function Signin(props) {
 
   return (
     <div>
+        <br></br>
         <h1>Sign In</h1>
 
-        <Container>
-            <Form.Group>
+        <Container className='form-signin-1'>
+            <Form.Group className='form-signin'>
                 <Form.Label>User Name</Form.Label>
-                <Form.Control name="username" onChange={changeHandler}></Form.Control>
+                <Form.Control name="username" onChange={changeHandler} placeholder="User Name"></Form.Control>
             </Form.Group>
 
-            <Form.Group>
+            <Form.Group className='form-signin'>
                 <Form.Label>Password</Form.Label>
-                <Form.Control name="password" type="password" onChange={changeHandler}></Form.Control>
+                <Form.Control name="password" type="password" onChange={changeHandler} placeholder="Password"></Form.Control>
             </Form.Group>
 
             <br></br>
 
-            <Button variant="primary" onClick={loginHandler}>Login</Button>
+            <Button  className='submit-btn' variant="primary" onClick={loginHandler}>Login</Button>
 
         </Container>
         

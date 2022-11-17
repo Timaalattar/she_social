@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {Container, Form, Button} from "react-bootstrap";
+import './Signup.css'
 
 export default function Signup(props) {
 
@@ -18,38 +19,39 @@ export default function Signup(props) {
 
   return (
     <div>
-        <h1>Signup</h1>
+       <br></br>
+        <h1>Join She Social today</h1>
 
-        <Container>
-            <Form.Group>
+        <Container className='form-signup-1'>
+            <Form.Group className='form-signup'>
                 <Form.Label> First Name</Form.Label>
-                <Form.Control name="FirstName" onChange={changeHandler}></Form.Control>
+                <Form.Control name="FirstName" onChange={changeHandler} placeholder="First Name"></Form.Control>
             </Form.Group>
 
-            <Form.Group>
+            <Form.Group className='form-signup'>
                 <Form.Label>Last Name</Form.Label>
-                <Form.Control name="LastName" onChange={changeHandler}></Form.Control>
+                <Form.Control name="LastName" onChange={changeHandler} placeholder="Last Name"></Form.Control>
             </Form.Group>
 
-            <Form.Group>
+            <Form.Group className='form-signup'>
                 <Form.Label>Username</Form.Label>
-                <Form.Control name="username" onChange={changeHandler}></Form.Control>
+                <Form.Control name="username" onChange={changeHandler} placeholder="Username"></Form.Control>
             </Form.Group>
 
-            <Form.Group>
+            <Form.Group className='form-signup'>
                 <Form.Label>Email Address</Form.Label>
-                <Form.Control name="email" onChange={changeHandler}></Form.Control>
+                <Form.Control name="email" onChange={changeHandler} placeholder="Email Address"></Form.Control>
             </Form.Group>
 
-            <Form.Group>
+            <Form.Group className='form-signup'>
                 <Form.Label>Password</Form.Label>
-                <Form.Control name="password" type="password" onChange={changeHandler}></Form.Control>
+                <Form.Control name="password" type="password" onChange={changeHandler} placeholder="Password"></Form.Control>
             </Form.Group>
 
             <br></br>
 
-            <Button variant="primary" onClick={regsiterHandler}>Register</Button>
-
+            <Button  className='submit-btn' variant="primary" onClick={regsiterHandler}>Register</Button>
+            <br></br>
         </Container>
         
     </div>

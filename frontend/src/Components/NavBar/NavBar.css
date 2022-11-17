@@ -1,5 +1,5 @@
 .navbar-ul {
-    background-color: #ECE7E6;
+    background-color: #fae1dd;
     display: flex;
     height: 80px;
     justify-content: flex-end;
@@ -21,7 +21,15 @@
 
 .logo {
     width: 100px;
-    height: 80px;
-    margin-right: 600px;
+    height: 70px;
+    margin-right: 1000px;
+    margin-top: 10px;
+}
+
+.logo2 {
+    width: 100px;
+    height: 70px;
+    margin-right: 700px;
+    margin-top: 10px;
 }
 
