@@ -20,7 +20,7 @@ function HostedEvents() {
 const params = useParams()
 
     
-  const [eventsList, setEventsList] = useState([])
+  const [user, setUser] = useState([])
     useEffect(()=> {
         user_confirmation_get()
       
@@ -32,15 +32,20 @@ const params = useParams()
    
         .then(res =>{
             console.log(res.data)
-        setEventsList(res.data)
+        setUser(res.data)
     })
         .catch(err => console.log(err))
       }
  
     return (
     <div>
-   {eventsList.length ? eventsList.map(user => 
+   {/* {eventsList.length ? eventsList.map(user =>  */}
+{/* //    {eventsList.length ? eventsList.map(user =>  */}
+
           <div className='created-event-container' key={user._id}>
+             <br></br><p>Hosted By : {user.username}</p>'
+             {user.Event ? user.Event.map(event => 
+        <div className="user-event-container" key={event._id}>
             <h2>{event.EventName}</h2>
             <br></br><p>Time : {event.Time}</p>
             <br></br><p>Date : {event.Date}</p>
@@ -48,16 +53,16 @@ const params = useParams()
             <Map lat={event.lat} lng={event.lng} />
             <br></br><p>Category : {event.Category}</p>
             <br></br><p>Description : {event.Description}</p>
-
                 {/* <button>View</button> */}
             <NavLink to={`/events/${event._id}`} >View</NavLink>
-          </div>
-        ) : null}
+             
+            </div>
+                  ) : null}
+        </div>
+      </div>
+      )
+  }
 
-
-    </div>
-  )
-}
 // 26.2171906, 50.1971381
 function Map(props){
   console.log(props)
