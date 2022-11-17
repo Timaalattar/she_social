@@ -38,6 +38,16 @@ async function confirmed_details_get(req,res) {
     try {
         const myConfirmed = await User.findById(req.params.userId)
         await myConfirmed.populate('Confirmed')
+        await myConfirmed.populate('Event')
+        // await myConfirmed.populate({
+        //     path: 'Confirmed',
+        //     model: 'Confirmed',
+        //     populate: {
+        //         path: 'Event',
+        //         model: 'Event'
+        //     }
+        // })
+        console.log(myConfirmed)
         res.json(myConfirmed)
 
     } catch (err) {
@@ -61,6 +71,7 @@ async function confirm_search_get(req,res) {
     try {
         const allConfirmed = await Event.findById(req.params.eventId)
         await allConfirmed.populate('Confirmed')
+        await allConfirmed.populate('User')
         console.log(allConfirmed)
         res.json(allConfirmed)  
     } catch (err) {

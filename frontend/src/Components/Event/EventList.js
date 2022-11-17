@@ -11,6 +11,7 @@ import usePlacesAutocomplete, {getGeocode,getLatLng} from 'use-places-autocomple
 
 
 function EventList() {
+  <h1>sheSocial Events</h1>
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: "AIzaSyDfoQb7_iRMi4sGqqEUa906kxdSIm2LNVk",
@@ -18,11 +19,12 @@ function EventList() {
   })
   
 
-  // <h1>sheSocial Events</h1>
 
     
   const [eventsList, setEventsList] = useState([])
     useEffect(()=> {
+
+      
         event_findall_get()
       
   }, [])
@@ -41,13 +43,13 @@ function EventList() {
             <h2>{event.EventName}</h2>
             <br></br><p>Time : {event.Time}</p>
             <br></br><p>Date : {event.Date}</p>
-            <br></br><p>Location : {event.Locate}</p>
-            <Map lat={event.lat} lng={event.lng} />
             <br></br><p>Category : {event.Category}</p>
             <br></br><p>Description : {event.Description}</p>
+            <br></br><p>Location : {event.Locate}</p>
+            <Map className="map" lat={event.lat} lng={event.lng} />
 
                 {/* <button>View</button> */}
-            <NavLink to={`/events/${event._id}`} >View</NavLink>
+            <NavLink to={`/events/${event._id}`} ><button>View</button></NavLink>
           </div>
         ) : null}
 
@@ -78,7 +80,7 @@ function Map(props){
 
       <GoogleMap 
        mapContainerClassName='map-container'
-       zoom={10} center={center} >
+       zoom={15} center={center} >
         
         <MarkerF position={center}></MarkerF>
 

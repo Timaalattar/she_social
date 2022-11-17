@@ -2,19 +2,17 @@ import React, {useEffect, useState, useMemo } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import './EventList.css'
-import EventMap from './EventMap'
 import {GoogleMap, useLoadScript, MarkerF } from '@react-google-maps/api'
 import usePlacesAutocomplete, {getGeocode,getLatLng} from 'use-places-autocomplete'
 
 
-function SingleEvent(props) {
+function SingleEvent() {
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: "AIzaSyDfoQb7_iRMi4sGqqEUa906kxdSIm2LNVk",
     libraries: ["places"]
   })
   
-  const [isConfirmed, setIsConfirmed] = useState(false);
-
+const [isConfirmed, setIsConfirmed] = useState(false);
 
 const [singleEvent, setsingleEvent] = useState({})
 
@@ -23,6 +21,8 @@ const params = useParams()
 // console.log(params)
 
 useEffect(() => {
+
+  
 
   event_details_get()
 }, [])
@@ -34,7 +34,6 @@ axios.get(`http://localhost:4000/events/${params.eventId}`)
 
 const confirmationHandler = (confirm) => {
   console.log(params)
-  debugger
   axios.post(`http://localhost:4000/events/${params.eventId}/confirmed`, { userId: props.user.user.id})
   .then(() => setIsConfirmed(true))
 }
@@ -53,6 +52,12 @@ return (
             <br></br><p>Location:{singleEvent.Locate}</p>
           
             <Map className="map" lat={singleEvent.lat} lng={singleEvent.lng} />
+          
+
+            {/* <button onClick={confirmationHandler}>Confirmed</button>  */}
+            <br></br><p>Location:{singleEvent.Locate}</p>
+          
+            <Map className="map" lat={singleEvent.lat} lng={singleEvent.lng} />
           {isConfirmed ? <h1>Confirmed!!!</h1> : null}
             <button onClick={confirmationHandler}>Confirmed</button> 
 
@@ -68,13 +73,13 @@ function Map(props){
   let lng = parseFloat(props.lng);
   console.log(lat);
   console.log(lng);
-  const center = useMemo(() => ({ lat: lat, lng: lng}), [])
+
+  const center = useMemo(() => ({ lat: lat, lng: lng}), [lat,lng])
   const [selected, setSelected] = useState(null)
   console.log(selected);
   // localStorage.setItem("lat", selected.lat)
   // localStorage.setItem("lng", selected.lng)
   // props.getData(selected) ;
-
 
   return (
       <>
@@ -86,8 +91,8 @@ function Map(props){
        mapContainerClassName='map-container'
        zoom={10} center={center} >
         
-        <MarkerF position={center}></MarkerF>
-
+       
+        <MarkerF position={selected}></MarkerF>     
       </GoogleMap>
 
       </>

@@ -53,7 +53,8 @@ async function user_login_post(req,res) {
         const payload = {
             user: {
                 id: user._id,
-                FirstName: user.FirstName
+                FirstName: user.FirstName,
+                username: user.username
             }
         }
 
@@ -131,6 +132,7 @@ async function event_create_username_post(req,res) {
     console.log('user',req.user);
     let user = await User.findById(req.user.id)
     //logic for creating the event
+    console.log('req.body', req.body)
     let newEvent = await Event.create(
         {...req.body,
         User: user.id
@@ -150,6 +152,7 @@ async function user_events_get(req,res) {
 try {
     const myEvents= await User.findById(req.params.userId)
     await myEvents.populate('Event')
+    await myEvents.populate('Confirmed')
     res.json(myEvents)
 
 } catch (err) {

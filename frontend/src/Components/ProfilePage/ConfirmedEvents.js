@@ -2,41 +2,41 @@ import React, {useState, useEffect, useMemo} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css' 
 import { Route , NavLink} from 'react-router-dom'
 import axios from 'axios'
-import './EventList.css'
-import EventMap from './EventMap'
+import './ProfilePage.css'
 import {GoogleMap, useLoadScript, MarkerF } from '@react-google-maps/api'
 import usePlacesAutocomplete, {getGeocode,getLatLng} from 'use-places-autocomplete'
+import { useParams } from 'react-router-dom'
 
 
 
-
-function EventList() {
+function ConfirmedEvents() {
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: "AIzaSyDfoQb7_iRMi4sGqqEUa906kxdSIm2LNVk",
     libraries: ["places"]
   })
   
-
-  // <h1>sheSocial Events</h1>
-
+  const params = useParams()
     
-  const [eventsList, setEventsList] = useState([])
+  const [user, setUser] = useState({})
     useEffect(()=> {
-        event_findall_get()
+        user_confirmation_get()
       
   }, [])
     
-    const event_findall_get = () => {
-        axios.get('http://localhost:4000/users/${params.userId}/confirmed')
+    const user_confirmation_get = () => {
+        axios.get(`http://localhost:4000/users/${params.userId}/confirmed`)
    
-        .then(res => setEventsList(res.data))
+        .then(res => {
+         console.log(res)
+          setUser(res.data)
+        })
         .catch(err => console.log(err))
       }
  
     return (
     <div>
-   {eventsList.length ? eventsList.map(event => 
+   {user ? user.Confirmed.map(event => 
           <div className='event-container' key={event._id}>
             <h2>{event.EventName}</h2>
             <br></br><p>Time : {event.Time}</p>
@@ -55,6 +55,8 @@ function EventList() {
     </div>
   )
 }
+
+
 // 26.2171906, 50.1971381
 function Map(props){
   console.log(props)
@@ -88,4 +90,4 @@ function Map(props){
   )
 }
 
-export default EventList
+export default ConfirmedEvents
