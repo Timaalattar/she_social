@@ -34,7 +34,6 @@ axios.get(`http://localhost:4000/events/${params.eventId}`)
 
 const confirmationHandler = (confirm) => {
   console.log(params)
-  debugger
   axios.post(`http://localhost:4000/events/${params.eventId}/confirmed`, { userId: props.user.user.id})
   .then(() => setIsConfirmed(true))
 }

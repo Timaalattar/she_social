@@ -5,7 +5,7 @@ import axios from 'axios'
 import './ProfilePage.css'
 import {GoogleMap, useLoadScript, MarkerF } from '@react-google-maps/api'
 import usePlacesAutocomplete, {getGeocode,getLatLng} from 'use-places-autocomplete'
-
+import { useParams } from 'react-router-dom'
 
 
 
@@ -16,26 +16,24 @@ function ConfirmedEvents() {
     libraries: ["places"]
   })
   
-
-  // <h1>sheSocial Events</h1>
-
+  const params = useParams()
     
-  const [eventsList, setEventsList] = useState([])
+  const [event, setEvent] = useState([])
     useEffect(()=> {
-        event_findall_get()
+        user_confirmation_get()
       
   }, [])
     
-    const event_findall_get = () => {
-        axios.get('http://localhost:4000/users/${params.userId}/confirmed')
+    const user_confirmation_get = () => {
+        axios.get(`http://localhost:4000/users/${params.userId}/confirmed`)
    
-        .then(res => setEventsList(res.data))
+        .then(res => setEvent(res.data))
         .catch(err => console.log(err))
       }
  
     return (
     <div>
-   {eventsList.length ? eventsList.map(event => 
+   {event.length ? eventsList.map(event => 
           <div className='event-container' key={event._id}>
             <h2>{event.EventName}</h2>
             <br></br><p>Time : {event.Time}</p>
@@ -54,6 +52,8 @@ function ConfirmedEvents() {
     </div>
   )
 }
+
+
 // 26.2171906, 50.1971381
 function Map(props){
   console.log(props)

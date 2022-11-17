@@ -38,6 +38,7 @@ async function confirmed_details_get(req,res) {
     try {
         const myConfirmed = await User.findById(req.params.userId)
         await myConfirmed.populate('Confirmed')
+        await myConfirmed.populate('Event')
         res.json(myConfirmed)
 
     } catch (err) {
@@ -61,6 +62,7 @@ async function confirm_search_get(req,res) {
     try {
         const allConfirmed = await Event.findById(req.params.eventId)
         await allConfirmed.populate('Confirmed')
+        await allConfirmed.populate('User')
         console.log(allConfirmed)
         res.json(allConfirmed)  
     } catch (err) {

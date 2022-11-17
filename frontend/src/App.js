@@ -82,7 +82,6 @@ function App() {
 
   const confirmationHandler = (confirm) => {
     console.log(params)
-    debugger
     axios.post(`http://localhost:4000/events/${params.eventId}/confirmed`, user.user.id)
     .then(() => setIsConfrimed(true))
   }

@@ -22,11 +22,11 @@ const params = useParams()
     
   const [user, setUser] = useState([])
     useEffect(()=> {
-        user_confirmation_get()
+        user_events_get()
       
   }, [])
     
-    const user_confirmation_get = () => {
+    const user_events_get = () => {
 
         axios.get(`http://localhost:4000/users/${params.userId}/events`)
    
