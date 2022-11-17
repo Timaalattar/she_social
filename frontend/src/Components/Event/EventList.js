@@ -47,7 +47,7 @@ function EventList() {
             <br></br><p>Description : {event.Description}</p>
 
                 {/* <button>View</button> */}
-            <NavLink to={`/events/${event._id}`} >View</NavLink>
+            <NavLink to={`/events/${event._id}`} ><button>View</button></NavLink>
           </div>
         ) : null}
 

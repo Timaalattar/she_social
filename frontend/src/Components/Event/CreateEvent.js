@@ -1,12 +1,15 @@
 import React, {useEffect, useState } from 'react'
+import { useNavigate} from "react-router-dom";
 import axios from 'axios'
 import './CreateEvent.css'
 import EventMap from './EventMap'
 
 
 
-
 function CreateEvent() {
+
+const navigate = useNavigate()
+
   
   useEffect(() => {
     
@@ -42,7 +45,8 @@ function CreateEvent() {
   }
   const handleSubmit = (e) => {
     e.preventDefault()
-    // axios.post(Create a tweet)
+    // axios.post(Create an event)
+    
     let lat = localStorage.getItem("lat");
     let lng = localStorage.getItem("lng");
     console.log(lat);
@@ -54,8 +58,14 @@ function CreateEvent() {
     {
       headers: {Authorization: token}
     })
-    .then(res => console.log(res))
-    .then(() => event_create_post())
+    .then(res => {
+      console.log(res)
+      event_create_post()
+      navigate(`/events`)
+    }
+      )
+    // .then(() => event_create_post())
+    // .then(() =>  navigate(`/events`))
     .catch(err => console.log(err))
   }
 
