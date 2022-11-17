@@ -1,7 +1,7 @@
 import React, {useEffect, useState } from 'react'
 import axios from 'axios'
 import './CreateEvent.css'
-
+import {Image} from "cloudinary-react"
 
 function CreateEvent() {
   useEffect(() => {
@@ -45,7 +45,62 @@ function CreateEvent() {
     .then(() => event_create_post())
     .catch(err => console.log(err))
   }
+
+  
+//upload image
+const [imageSelected, setImageSelected]=useState("")
+const [fileInputState, setFileInputState] = useState('');
+    const [previewSource, setPreviewSource] = useState('');
+    const [selectedFile, setSelectedFile] = useState();
+    const [successMsg, setSuccessMsg] = useState('');
+    const [errMsg, setErrMsg] = useState('');
+    const handleFileInputChange = (e) => {
+        const file = e.target.files[0];
+        previewFile(file);
+        setSelectedFile(file);
+        setFileInputState(e.target.value);
+    };
+
+    const previewFile = (file) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onloadend = () => {
+            setPreviewSource(reader.result);
+        };
+    };
+
+const handleSubmitFile = () => {
+  if (!previewSource) return;
+  uploadImage(previewSource);
+};
+
+const uploadImage = async (base64EncodedImage) => {
+  try {
+    await fetch(`http://localhost:4000/api/upload`, {
+      method: "POST",
+      body: JSON.stringify({ data: base64EncodedImage }),
+      headers: { "Content-type": "application/json" },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+// const uploadImage = ()=> {
+//   // console.log(files[0]);
+//  const formData= new FormData()
+//  formData.append("file", imageSelected)
+//  formData.append('upload-preset', "dgw4mungp")
+//  axios.post("http://api.cloudinary.com/v1_1/dgw4mungp/image/upload", formData)
+// .then((Response)=>{
+//   console.log(Response)
+//  });
+// };
+
   return (
+    <>
+    
     <div>
 
 <form onSubmit={handleSubmit} className='homeform'>
@@ -62,6 +117,43 @@ function CreateEvent() {
       </form>
 
     </div>
+    <div>
+      {/* <input
+       type="file" 
+       onChange={(event) =>{
+      setImageSelected(event.target.files[0])}} />
+        <button onClick={handleSubmitFile}>upload Image</button> */}
+
+       {/* <Image style={{width:200}} cloudName="e5wupgul"
+       publicId=""
+       />
+        // */}
+         
+
+         
+         <form onSubmit={handleSubmitFile} className="form">
+                <input
+                    id="fileInput"
+                    type="file"
+                    name="image"
+                    onChange={handleFileInputChange}
+                    value={fileInputState}
+                    className="form-input"
+                />
+                <button className="btn" type="submit" cloudName="e5wupgul">
+                    Submit
+                </button>
+            </form>
+            {previewSource && (
+                <img 
+                    src={previewSource}
+                    alt="chosen"
+                    style={{ height: '300px' }}
+                />
+            )}
+
+    </div>
+    </>
   )
 }
 

@@ -87,7 +87,11 @@ function App() {
 
 console.log(user)
 
-  return (
+
+  return ( 
+    <>
+
+    
     <Router>
     <NavBar onLogoutHandler={onLogoutHandler} isAuth={isAuth} user={user}/>
     <div className="App">
@@ -104,6 +108,7 @@ console.log(user)
       </Routes>
     </div>
   </Router>
+    </>
   );
 }
 
