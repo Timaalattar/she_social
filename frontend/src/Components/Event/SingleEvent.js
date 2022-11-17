@@ -68,7 +68,7 @@ function Map(props){
   let lng = parseFloat(props.lng);
   console.log(lat);
   console.log(lng);
-  const center = useMemo(() => ({ lat: lat, lng: lng}), [])
+  const center = useMemo(() => ({ lat: lat, lng: lng}), [lat,lng])
   const [selected, setSelected] = useState(null)
   console.log(selected);
   // localStorage.setItem("lat", selected.lat)
@@ -84,7 +84,7 @@ function Map(props){
 
       <GoogleMap 
        mapContainerClassName='map-container'
-       zoom={10} center={center} >
+       zoom={15} center={center} >
         
         <MarkerF position={center}></MarkerF>
 
